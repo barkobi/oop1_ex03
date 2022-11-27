@@ -10,6 +10,7 @@ int Zi::getImag() const {return m_ziData.b;}
 
 int Zi::getNorm() const {return m_ziData.a * m_ziData.a + m_ziData.b * m_ziData.b;}
 
+
 Zi Zi::getConj() const {
     return Zi(m_ziData.a,-(m_ziData.b));}
 
