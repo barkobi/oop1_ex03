@@ -1,5 +1,5 @@
 
-#include "Vector.h"
+#include "../include/Vector.h"
 
 Vector::Vector(int size, const Zi &init)
         : m_arr(Array(size,init)) {}

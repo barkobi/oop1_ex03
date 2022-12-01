@@ -1,6 +1,6 @@
 
-#include "../include/Zi.h"
-#include "../include/array.h"
+#include "Zi.h"
+#include "array.h"
 
 class Vector{
 public:
