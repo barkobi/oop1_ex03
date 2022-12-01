@@ -15,17 +15,6 @@ public:
     bool isEmpty() const;
 
     // operators:
-    Vector operator+(const Vector &other) const;
-    Vector operator-(const Vector &other) const;
-    Vector operator*(const Vector &other) const;
-    Vector operator*(int s) const;
-    Vector& operator+=(const Vector &other);
-    Vector& operator-=(const Vector &other);
-    Vector& operator*=(const Vector &other);
-    Vector& operator*=(int s);
-    Vector& operator-();
-    bool operator==(const Vector &other) const;
-    bool operator!=(const Vector &other) const;
     Array operator[](int index) const;
     Array& operator[](int index);
 
@@ -34,5 +23,17 @@ private:
     int m_size;
 };
 
-Vector operator*(int s, const Vector &other);
+Vector operator+(const Vector &v1, const Vector &v2);
+Vector operator-(const Vector &v1, const Vector &v2);
+Vector operator*(const Vector &v1, const Vector &v2);
+Vector operator*(const Vector &v, int s);
+Vector operator*(int s, const Vector &v);
+Vector& operator+=(Vector v1, const Vector &v2);
+Vector& operator-=(Vector v1, const Vector &v2);
+Vector& operator*=(Vector v1, const Vector &v2);
+Vector& operator*=(Vector v, int s);
+Vector& operator-(const Vector &v2);
+bool operator==(const Vector &v1, const Vector &v2);
+bool operator!=(const Vector &v1, const Vector &v2);
+
 std::ostream& operator<< (std::ostream&, const Vector&);

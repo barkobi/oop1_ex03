@@ -25,6 +25,6 @@ private:
 
 // operators:
 Array operator+(const Array& arr1, const Array& arr2);
-Array& operator+=(Array arr1, const Array& arr2);
+Array& operator+=(Array &arr1, const Array& arr2);
 bool operator==(const Array& arr1, const Array& arr2);
 bool operator!=(const Array& arr1, const Array& arr2);

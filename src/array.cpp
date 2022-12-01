@@ -57,9 +57,9 @@ Array operator+(const Array& arr1, const Array& arr2){
     return res;
 }
 
-Array& operator+=(Array arr1, const Array& arr2){
-    Array tmp = arr1+arr2;
-    return tmp;
+Array& operator+=(Array &arr1, const Array& arr2){
+    arr1 = arr1+arr2;
+    return arr1;
 }
 
 Zi &Array::operator[](int index) {
