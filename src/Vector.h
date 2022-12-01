@@ -14,6 +14,7 @@ public:
     // operators:
     Zi operator[](int index) const;
     Zi& operator[](int index);
+    bool operator==(const Vector &other) const;
 
 private:
     Array m_arr;
@@ -29,7 +30,6 @@ Vector& operator+=(Vector v1, const Vector &v2);
 Vector& operator-=(Vector v1, const Vector &v2);
 Vector& operator*=(Vector v1, const Vector &v2);
 Vector& operator*=(Vector v, int s);
-bool operator==(const Vector &v1, const Vector &v2);
 bool operator!=(const Vector &v1, const Vector &v2);
 
-std::ostream& operator<< (std::ostream&, const Vector&);
+std::ostream& operator<< (std::ostream&, const Vector& v);
