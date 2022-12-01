@@ -4,7 +4,7 @@
 int main() {
     Zi z(3,5);
     Zi y(4,2);
-    std::cout << y;
+    std::cout << y-z;
     return 0;
 }
 
