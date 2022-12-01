@@ -32,7 +32,7 @@ public:
     bool dividedBy(const Zi &divisor) const;
 
 
-        private:
+private:
     ZiData m_ziData;
 };
 

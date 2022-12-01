@@ -76,8 +76,8 @@ bool Zi::operator!=(const Zi &other) const {
 }
 
 bool Zi::dividedBy(const Zi &divisor) const {
-    this->operator%(divisor);
-    return divisor.m_ziData.a == 0 && divisor.m_ziData.b == 0;
+    Zi temp = this->operator%(divisor);
+    return temp.m_ziData.a == 0 && temp.m_ziData.b == 0;
 }
 
 
