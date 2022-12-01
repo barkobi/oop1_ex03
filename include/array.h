@@ -4,7 +4,7 @@
 class Array{
 public:
     // constructors / destructors:
-    explicit Array(int size = 1, Zi initial = Zi());
+    explicit Array(int size = 0, Zi initial = Zi());
     Array(Zi arr[], int size);
     Array(const Array &old);
     ~Array();
@@ -13,16 +13,17 @@ public:
     int getSize() const;
     bool isEmpty() const;
 
-    // operators:
-    Array operator+(const Array& other) const;
-    Array& operator+=(const Array& other);
-    Zi& operator[](int index);
-    Zi operator[](int index) const;
-    bool operator==(const Array &other) const;
-    bool operator!=(const Array &other) const;
+
 
 private:
     Zi *m_arr;
     int m_size;
 
 };
+
+// operators:
+Array operator+(const Array& arr1, const Array& arr2);
+Array& operator+=(Array arr1, const Array& arr2);
+Zi operator[](const Array& arr, int index);
+bool operator==(const Array& arr1, const Array& arr2);
+bool operator!=(const Array& arr1, const Array& arr2);

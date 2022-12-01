@@ -58,17 +58,10 @@ Array Array::operator+(const Array &other) const {
 }
 
 Array &Array::operator+=(const Array &other) {
-    Zi *tmp = new (std::nothrow) Zi[m_size+other.m_size];
-
-    for(int i=0 ; i<m_size ; i++)
-        tmp[i] = m_arr[i];
-
-    for(int i=0 ; i<other.m_size ; i++)
-        tmp[m_size+i] = other.m_arr[i];
-
-    m_size+=other.m_size;
+    Array tmp = this->operator+(other);
+    m_size = tmp.m_size;
     delete [] m_arr;
-    m_arr = tmp;
+    m_arr = tmp.m_arr;
 }
 
 Zi &Array::operator[](int index) {
