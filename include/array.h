@@ -13,6 +13,8 @@ public:
     int getSize() const;
     bool isEmpty() const;
 
+    const Zi operator[](int index) const;
+    Zi& operator[](int index);
 
 
 private:
@@ -24,6 +26,5 @@ private:
 // operators:
 Array operator+(const Array& arr1, const Array& arr2);
 Array& operator+=(Array arr1, const Array& arr2);
-Zi operator[](const Array& arr, int index);
 bool operator==(const Array& arr1, const Array& arr2);
 bool operator!=(const Array& arr1, const Array& arr2);
