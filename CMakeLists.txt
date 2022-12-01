@@ -3,4 +3,4 @@ project(oop1_ex03)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(oop1_ex03 src/main.cpp src/Zi.cpp include/Zi.h include/ZiData.h)
+add_executable(oop1_ex03 src/main.cpp src/Zi.cpp include/Zi.h include/ZiData.h src/array.cpp include/array.h src/Vector.cpp src/Vector.h)

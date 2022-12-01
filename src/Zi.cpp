@@ -76,13 +76,14 @@ bool Zi::operator!=(const Zi &other) const {
 }
 
 bool Zi::dividedBy(const Zi &divisor) const {
-    Zi temp = this->operator%(divisor);
-    return temp.m_ziData.a == 0 && temp.m_ziData.b == 0;
+    auto tmp = this->operator%(divisor);
+    return tmp.m_ziData.a == 0 && tmp.m_ziData.b == 0;
 }
 
 
 std::ostream& operator<< (std::ostream& os ,const  Zi& z){
-    os << z.getReal() << " + " << z.getImag() << 'i';
+    char op = z.getImag() >= 0 ? '+' : '-';
+    os << z.getReal() << " " << op << " " << abs(z.getImag()) << 'i';
     return os;
 }
 

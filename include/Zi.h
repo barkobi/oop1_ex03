@@ -2,20 +2,22 @@
 
 #include <iostream>
 #include <cmath>
-#include "ZiData.h"
 #include <iosfwd>
+#include "ZiData.h"
 
 
 class Zi{
 public:
-    //--ctor
+    //constructors:
     Zi(int a = 0, int b = 0);
+
     //getters
     int getReal() const;
     int getImag() const;
     int getNorm() const;
     Zi getConj() const;
-    // overloding
+
+    // operators:
     Zi operator+(const Zi& other) const;
     Zi operator-(const Zi& other) const;
     Zi operator*(const Zi&  other) const;
@@ -33,6 +35,7 @@ public:
 
 
 private:
+    // members:
     ZiData m_ziData;
 };
 
