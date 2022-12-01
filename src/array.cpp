@@ -30,44 +30,42 @@ int Array::getSize() const {return m_size;}
 
 bool Array::isEmpty() const {return m_size == 0;}
 
-bool Array::operator==(const Array &other) const {
-    if(m_size != other.m_size)
+bool operator==(const Array& arr1, const Array& arr2) {
+    if(arr1.getSize() != arr2.getSize())
         return false;
 
-    for(int i=0 ; i<m_size ; i++)
-        if(m_arr[i] != other.m_arr[i])
+    for(int i=0 ; i<arr1.getSize() ; i++)
+        if(arr1[i] != arr2[i])
             return false;
 
     return true;
 }
 
-bool Array::operator!=(const Array &other) const {
-    return !(this->operator==(other));
+bool operator!=(const Array& arr1, const Array& arr2) {
+    return !(arr1 == arr2);
 }
 
-Array Array::operator+(const Array &other) const {
-    Array res = Array(m_size+other.m_size);
+Array operator+(const Array& arr1, const Array& arr2){
+    Array res = Array(arr1.getSize()+arr2.getSize());
 
-    for(int i=0 ; i<m_size ; i++)
-        res[i] = m_arr[i];
+    for(int i=0 ; i<arr1.getSize() ; i++)
+        res[i] = arr1[i];
 
-    for(int i=0 ; i<other.m_size ; i++)
-        res[m_size+i] = other.m_arr[i];
+    for(int i=0 ; i<arr2.getSize() ; i++)
+        res[arr1.getSize()+i] = arr2[i];
 
     return res;
 }
 
-Array &Array::operator+=(const Array &other) {
-    Array tmp = this->operator+(other);
-    m_size = tmp.m_size;
-    delete [] m_arr;
-    m_arr = tmp.m_arr;
+Array& operator+=(Array arr1, const Array& arr2){
+    Array tmp = arr1+arr2;
+    return tmp;
 }
 
 Zi &Array::operator[](int index) {
     return m_arr[index];
 }
 
-Zi Array::operator[](int index) const {
+const Zi Array::operator[](int index) const {
     return m_arr[index];
 }
