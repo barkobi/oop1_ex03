@@ -17,13 +17,6 @@ public:
     int getNorm() const;
     Zi getConj() const;
 
-    // operators:
-    Zi& operator+=(const Zi &other);
-    Zi& operator-=(const Zi &other);
-    Zi& operator*=(const Zi &other);
-    Zi& operator%=(const Zi &other);
-    Zi& operator/=(const Zi &other);
-
 private:
     // members:
     ZiData m_ziData;
@@ -36,6 +29,11 @@ Zi operator*(const Zi& first,const Zi& other);
 Zi operator%(const Zi& first,const Zi& other);
 Zi operator/(const Zi& first,const Zi& other);
 Zi operator-(const Zi& origin);
+Zi& operator+=(Zi z1, const Zi &z2);
+Zi& operator-=(Zi z1, const Zi &z2);
+Zi& operator*=(Zi z1, const Zi &z2);
+Zi& operator/=(Zi z1, const Zi &z2);
+Zi& operator%=(Zi z1, const Zi &z2);
 bool operator==(const Zi& first,const Zi& other);
 bool operator!=(const Zi& first,const Zi& other);
 bool dividedBy(const Zi& divided,const Zi &divisor);

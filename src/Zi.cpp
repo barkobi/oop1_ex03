@@ -14,35 +14,30 @@ int Zi::getNorm() const {return m_ziData.a * m_ziData.a + m_ziData.b * m_ziData.
 Zi Zi::getConj() const {
     return Zi(m_ziData.a,-(m_ziData.b));}
 
-Zi& Zi::operator+=(const Zi &other) {
-    m_ziData.a += other.m_ziData.a;
-    m_ziData.b += other.m_ziData.b;
-    return *this;
-}
-Zi& Zi::operator-=(const Zi &other) {
-    return this->operator+=(-other);
+Zi& operator+=(Zi z1, const Zi &z2){
+    z1 = z1+z2;
+    return z1;
 }
 
-Zi& Zi::operator*=(const Zi &other) {
-    Zi temp;
-    temp.m_ziData.a = (this->m_ziData.a * other.m_ziData.a) - (this->m_ziData.b * other.m_ziData.b);
-    temp.m_ziData.b = (this->m_ziData.a * other.m_ziData.b) + (this->m_ziData.b * other.m_ziData.a);
-    return *this = temp;;
+Zi& operator-=(Zi z1, const Zi &z2){
+    z1 = z1-z2;
+    return z1;
 }
 
-Zi& Zi::operator%=(const Zi &other) {
-    Zi temp = *this;
-    this->operator/=(other);
-    temp.m_ziData.a %= this->m_ziData.a ;
-    temp.m_ziData.b %= this->m_ziData.b;
-    return *this = temp;
+Zi& operator*=(Zi z1, const Zi &z2){
+    z1 = z1*z2;
+    return z1;
 }
 
-Zi& Zi::operator/=(const Zi &other) {
-    this->operator*=(other.getConj());
-    this->m_ziData.a = round((double)this->m_ziData.a / (double)other.getNorm());
-    this->m_ziData.b = round((double)this->m_ziData.b / (double)other.getNorm());
-    return *this;
+Zi& operator/=(Zi z1, const Zi &z2)
+{
+    z1 = z1/z2;
+    return z1;
+}
+
+Zi& operator%=(Zi z1, const Zi &z2){
+    z1 = z1%z2;
+    return z1;
 }
 
 std::ostream& operator<< (std::ostream& os ,const  Zi& z){
@@ -50,6 +45,7 @@ std::ostream& operator<< (std::ostream& os ,const  Zi& z){
     os << z.getReal() << " " << op << " " << abs(z.getImag()) << 'i';
     return os;
 }
+
 Zi operator+(const Zi& first, const Zi& other) {
     return Zi(first.getReal() + other.getReal(),first.getImag() + other.getImag());
 }
