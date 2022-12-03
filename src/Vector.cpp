@@ -1,4 +1,3 @@
-
 #include "Vector.h"
 
 Vector::Vector(int size, const Zi &init)

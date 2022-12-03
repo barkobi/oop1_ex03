@@ -1,4 +1,3 @@
-
 #include "Zi.h"
 
 class Array{

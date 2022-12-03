@@ -2,9 +2,8 @@
 #include "../include/Zi.h"
 
 int main() {
-    Zi z(3,5);
-    Zi y(4,2);
-    std::cout << y-z;
+    Zi z(8,1);
+    Zi y(27,-23);
     return 0;
 }
 

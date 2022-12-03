@@ -1,4 +1,3 @@
-
 #include "../include/Zi.h"
 #include "../include/array.h"
 

@@ -1,4 +1,3 @@
-
 #include "../include/array.h"
 
 Array::Array(int size, Zi initial) {

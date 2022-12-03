@@ -18,25 +18,25 @@ public:
     Zi getConj() const;
 
     // operators:
-    Zi operator+(const Zi& other) const;
-    Zi operator-(const Zi& other) const;
-    Zi operator*(const Zi&  other) const;
-    Zi operator%(const Zi& other) const;
-    Zi operator/(const Zi& other) const;
     Zi& operator+=(const Zi &other);
     Zi& operator-=(const Zi &other);
     Zi& operator*=(const Zi &other);
     Zi& operator%=(const Zi &other);
     Zi& operator/=(const Zi &other);
-    Zi operator-() const;
-    bool operator==(const Zi &other) const;
-    bool operator!=(const Zi &other) const;
-    bool dividedBy(const Zi &divisor) const;
-
 
 private:
     // members:
     ZiData m_ziData;
 };
 
+// global operators:
+Zi operator+(const Zi& first,const Zi& other);
+Zi operator-(const Zi& first,const Zi& other);
+Zi operator*(const Zi& first,const Zi& other);
+Zi operator%(const Zi& first,const Zi& other);
+Zi operator/(const Zi& first,const Zi& other);
+Zi operator-(const Zi& origin);
+bool operator==(const Zi& first,const Zi& other);
+bool operator!=(const Zi& first,const Zi& other);
+bool dividedBy(const Zi& divided,const Zi &divisor);
 std::ostream& operator<< (std::ostream& os ,const  Zi& z);
