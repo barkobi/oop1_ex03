@@ -7,7 +7,7 @@ Vector::Vector(int size, const Zi &init)
 Vector::Vector(Zi *arr, int size)
         : m_arr(Array(arr, size)) {}
 
-int Vector::getSize() const {return m_arr.getSize();}
+int Vector::size() const {return m_arr.size();}
 
 Zi &Vector::operator[](int index) {return m_arr[index];}
 
@@ -18,12 +18,12 @@ bool Vector::operator==(const Vector &other) const{
 }
 
 Vector operator+(const Vector &v1, const Vector &v2){
-    int max_len = v1.getSize() >= v2.getSize() ? v1.getSize() : v2.getSize();
+    int max_len = v1.size() >= v2.size() ? v1.size() : v2.size();
     Vector res = Vector(max_len);
-    for(int i=0 ; i<v1.getSize() ; i++)
+    for(int i=0 ; i<v1.size() ; i++)
         res[i] = v1[i];
 
-    for(int i=0 ; i<v2.getSize() ; i++)
+    for(int i=0 ; i<v2.size() ; i++)
         res[i] += v2[i];
 
     return res;
@@ -35,28 +35,28 @@ Vector operator-(const Vector &v1, const Vector &v2){
 }
 
 Vector operator-(const Vector &v){
-    Vector tmp = Vector(v.getSize());
-    for(int i=0 ; i<v.getSize() ; i++)
+    Vector tmp = Vector(v.size());
+    for(int i=0 ; i<v.size() ; i++)
         tmp[i]= -v[i];
     return tmp;
 }
 
 Vector operator*(const Vector &v1, const Vector &v2){
-    int max_len = v1.getSize() >= v2.getSize() ? v1.getSize() : v2.getSize();
+    int max_len = v1.size() >= v2.size() ? v1.size() : v2.size();
     Vector res = Vector(max_len);
-    for(int i=0 ; i<v1.getSize() ; i++)
+    for(int i=0 ; i<v1.size() ; i++)
         res[i] = v1[i];
 
-    for(int i=0 ; i<v2.getSize() ; i++)
+    for(int i=0 ; i<v2.size() ; i++)
         res[i] *= v2[i];
 
     return res;
 }
 
 Vector operator*(const Vector &v, int s){
-    Vector tmp = Vector(v.getSize());
-    for(int i=0 ; i<v.getSize() ; i++){
-        tmp[i] = Zi(tmp[i].getReal()*s, tmp[i].getImag()*s);
+    Vector tmp = Vector(v.size());
+    for(int i=0 ; i<v.size() ; i++){
+        tmp[i] = Zi(tmp[i].real()*s, tmp[i].imag()*s);
     }
     return tmp;
 }
@@ -90,7 +90,7 @@ bool operator!=(const Vector &v1, const Vector &v2){
 }
 
 std::ostream& operator<< (std::ostream&, const Vector& v){
-    for(int i=0 ; i<v.getSize() ; i++)
+    for(int i=0 ; i<v.size() ; i++)
         std::cout << v[i] << " ";
     std::cout << "\n";
 }

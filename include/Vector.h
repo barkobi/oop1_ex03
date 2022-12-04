@@ -9,7 +9,7 @@ public:
     Vector(Zi arr[], int size);
 
     //getters / setters:
-    int getSize() const;
+    int size() const;
 
     // operators:
     Zi operator[](int index) const;

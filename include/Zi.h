@@ -12,17 +12,12 @@ public:
     Zi(int a = 0, int b = 0);
 
     //getters
-    int getReal() const;
-    int getImag() const;
-    int getNorm() const;
-    Zi getConj() const;
+    int real() const;
+    int imag() const;
+    int norm() const;
+    Zi conj() const;
 
-    // operators:
-    Zi& operator+=(const Zi &other);
-    Zi& operator-=(const Zi &other);
-    Zi& operator*=(const Zi &other);
-    Zi& operator%=(const Zi &other);
-    Zi& operator/=(const Zi &other);
+    bool dividedBy(const Zi &divisor);
 
 private:
     // members:
@@ -36,7 +31,11 @@ Zi operator*(const Zi& first,const Zi& other);
 Zi operator%(const Zi& first,const Zi& other);
 Zi operator/(const Zi& first,const Zi& other);
 Zi operator-(const Zi& origin);
+Zi& operator+=(Zi z1, const Zi &z2);
+Zi& operator-=(Zi z1, const Zi &z2);
+Zi& operator*=(Zi z1, const Zi &z2);
+Zi& operator/=(Zi z1, const Zi &z2);
+Zi& operator%=(Zi z1, const Zi &z2);
 bool operator==(const Zi& first,const Zi& other);
 bool operator!=(const Zi& first,const Zi& other);
-bool dividedBy(const Zi& divided,const Zi &divisor);
 std::ostream& operator<< (std::ostream& os ,const  Zi& z);

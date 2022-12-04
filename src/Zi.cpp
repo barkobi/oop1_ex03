@@ -4,90 +4,85 @@
 
 Zi::Zi(int a, int b) : m_ziData(ZiData(a,b)){}
 
-int Zi::getReal() const {return m_ziData.a;}
+int Zi::real() const {return m_ziData.a;}
 
-int Zi::getImag() const {return m_ziData.b;}
+int Zi::imag() const {return m_ziData.b;}
 
-int Zi::getNorm() const {return m_ziData.a * m_ziData.a + m_ziData.b * m_ziData.b;}
+int Zi::norm() const {return m_ziData.a * m_ziData.a + m_ziData.b * m_ziData.b;}
 
+bool Zi::dividedBy(const Zi &divisor) {
+    Zi temp = operator%(*this, divisor);
+    return temp.real() == 0 && temp.imag() == 0;
+}
 
-Zi Zi::getConj() const {
+Zi Zi::conj() const {
     return Zi(m_ziData.a,-(m_ziData.b));}
 
-Zi& Zi::operator+=(const Zi &other) {
-    m_ziData.a += other.m_ziData.a;
-    m_ziData.b += other.m_ziData.b;
-    return *this;
-}
-Zi& Zi::operator-=(const Zi &other) {
-    return this->operator+=(-other);
+Zi& operator+=(Zi z1, const Zi &z2){
+    z1 = z1+z2;
+    return z1;
 }
 
-Zi& Zi::operator*=(const Zi &other) {
-    Zi temp;
-    temp.m_ziData.a = (this->m_ziData.a * other.m_ziData.a) - (this->m_ziData.b * other.m_ziData.b);
-    temp.m_ziData.b = (this->m_ziData.a * other.m_ziData.b) + (this->m_ziData.b * other.m_ziData.a);
-    return *this = temp;;
+Zi& operator-=(Zi z1, const Zi &z2){
+    z1 = z1-z2;
+    return z1;
 }
 
-Zi& Zi::operator%=(const Zi &other) {
-    Zi temp = *this;
-    this->operator/=(other);
-    temp.m_ziData.a %= this->m_ziData.a ;
-    temp.m_ziData.b %= this->m_ziData.b;
-    return *this = temp;
+Zi& operator*=(Zi z1, const Zi &z2){
+    z1 = z1*z2;
+    return z1;
 }
 
-Zi& Zi::operator/=(const Zi &other) {
-    this->operator*=(other.getConj());
-    this->m_ziData.a = round((double)this->m_ziData.a / (double)other.getNorm());
-    this->m_ziData.b = round((double)this->m_ziData.b / (double)other.getNorm());
-    return *this;
+Zi& operator/=(Zi z1, const Zi &z2)
+{
+    z1 = z1/z2;
+    return z1;
+}
+
+Zi& operator%=(Zi z1, const Zi &z2){
+    z1 = z1%z2;
+    return z1;
 }
 
 std::ostream& operator<< (std::ostream& os ,const  Zi& z){
-    char op = z.getImag() >= 0 ? '+' : '-';
-    os << z.getReal() << " " << op << " " << abs(z.getImag()) << 'i';
+    char op = z.imag() >= 0 ? '+' : '-';
+    os << z.real() << " " << op << " " << abs(z.imag()) << 'i';
     return os;
 }
+
 Zi operator+(const Zi& first, const Zi& other) {
-    return Zi(first.getReal() + other.getReal(),first.getImag() + other.getImag());
+    return Zi(first.real() + other.real(),first.imag() + other.imag());
 }
 
 Zi operator-(const Zi& first, const Zi& other) {
-    return Zi(first.getReal() - other.getReal(),first.getImag() - other.getImag());
+    return Zi(first.real() - other.real(),first.imag() - other.imag());
 }
 
 Zi operator*(const Zi& first,const Zi& other) {
-    return Zi((first.getReal() * other.getReal()) - (first.getImag() * other.getImag()),
-              (first.getReal() * other.getImag()) + (first.getImag() * other.getReal()));
+    return Zi((first.real() * other.real()) - (first.imag() * other.imag()),
+              (first.real() * other.imag()) + (first.imag() * other.real()));
 }
 
 Zi operator-(const Zi& origin ) {
-    return Zi(-origin.getReal(),-origin.getImag());
+    return Zi(-origin.real(),-origin.imag());
 }
 
 Zi operator/(const Zi& first,const Zi& other) {
-    Zi div = first * other.getConj();
-    int real = round((double)div.getReal() / (double)other.getNorm());
-    int image = round((double)div.getImag() / (double)other.getNorm());
-    return Zi(real,image);
+    Zi div = first * other.conj();
+    int real = round((double)div.real() / (double)other.norm());
+    int imag = round((double)div.imag() / (double)other.norm());
+    return Zi(real,imag);
 }
 
 Zi operator%(const Zi& first,const Zi& other) {
     Zi div =  first / other;
-    return Zi(first.getReal() % div.getReal(),first.getImag() % div.getImag());
+    return Zi(first.real() % div.real(),first.imag() % div.imag());
 }
 
 bool operator==(const Zi& first,const Zi& other) {
-    return first.getReal() == other.getReal() && first.getImag() == other.getImag();
+    return first.real() == other.real() && first.imag() == other.imag();
 }
 
 bool operator!=(const Zi& first,const Zi& other) {
-    return first.getReal() != other.getReal() && first.getImag() != other.getImag();
-}
-
-bool dividedBy(const Zi &divided, const Zi &divisor) {
-    Zi temp = divided % divisor;
-    return temp.getReal() == 0 && temp.getImag() == 0;
+    return first.real() != other.real() && first.imag() != other.imag();
 }
