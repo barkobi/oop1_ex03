@@ -12,7 +12,7 @@ public:
     int getSize() const;
     bool isEmpty() const;
 
-    const Zi operator[](int index) const;
+    Zi operator[](int index) const;
     Zi& operator[](int index);
 
 

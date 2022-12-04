@@ -60,11 +60,10 @@ Array& operator+=(Array &arr1, const Array& arr2){
     arr1 = arr1+arr2;
     return arr1;
 }
-
 Zi &Array::operator[](int index) {
     return m_arr[index];
 }
 
-const Zi Array::operator[](int index) const {
+Zi Array::operator[](int index) const {
     return m_arr[index];
 }
