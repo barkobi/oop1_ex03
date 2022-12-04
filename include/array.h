@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Zi.h"
 
 class Array{
@@ -9,7 +11,7 @@ public:
     ~Array();
 
     // getters / setters:
-    int getSize() const;
+    int size() const;
     bool isEmpty() const;
 
     const Zi operator[](int index) const;

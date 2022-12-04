@@ -25,15 +25,15 @@ Array::~Array() {
     delete [] m_arr;
 }
 
-int Array::getSize() const {return m_size;}
+int Array::size() const {return m_size;}
 
 bool Array::isEmpty() const {return m_size == 0;}
 
 bool operator==(const Array& arr1, const Array& arr2) {
-    if(arr1.getSize() != arr2.getSize())
+    if(arr1.size() != arr2.size())
         return false;
 
-    for(int i=0 ; i<arr1.getSize() ; i++)
+    for(int i=0 ; i<arr1.size() ; i++)
         if(arr1[i] != arr2[i])
             return false;
 
@@ -45,13 +45,13 @@ bool operator!=(const Array& arr1, const Array& arr2) {
 }
 
 Array operator+(const Array& arr1, const Array& arr2){
-    Array res = Array(arr1.getSize()+arr2.getSize());
+    Array res = Array(arr1.size()+arr2.size());
 
-    for(int i=0 ; i<arr1.getSize() ; i++)
+    for(int i=0 ; i<arr1.size() ; i++)
         res[i] = arr1[i];
 
-    for(int i=0 ; i<arr2.getSize() ; i++)
-        res[arr1.getSize()+i] = arr2[i];
+    for(int i=0 ; i<arr2.size() ; i++)
+        res[arr1.size()+i] = arr2[i];
 
     return res;
 }
